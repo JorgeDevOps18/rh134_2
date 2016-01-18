@@ -1,0 +1,23 @@
+useradd, usermod, userdel 
+
+lslogins romeo
+
+lslogins ec2-user
+
+date -d '+60 days' +'%Y-%m-%d'
+
+chage -E `date -d '+60 days' +'%Y-%m-%d'` romeo
+
+lslogins --logins=0,500,jdoe,esmith --output=UID,USER,LAST-LOGIN,LAST-TTY,FAILED-LOGIN,FAILED-TTY
+
+lslogins --user-accs --supp-groups --acc-expiration
+
+lslogins --logins=jsmith --output=LAST-LOGIN --time-format=iso | tail -1
+
+gpasswd groupname
+
+grpck — A command to verify the /etc/group file. 
+
+pwck — A command to verify the /etc/passwd and /etc/shadow files.
+
+pwconv — A tool to convert standard passwords to shadow passwords. 
