@@ -1,3 +1,6 @@
+vipw -s - Edit /etc/passwd file
+vigr -s - Edit /etc/group file
+
 useradd, usermod, userdel
 
 useradd \
