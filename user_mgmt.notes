@@ -1,3 +1,5 @@
+rpm -ql shadow-utils-4.1.5.1-18.el7.x86_64|grep bin    -- Get all bins for user/group MGMT
+
 vipw -s - Edit /etc/passwd file
 vigr -s - Edit /etc/group file
 
