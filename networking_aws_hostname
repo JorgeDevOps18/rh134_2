@@ -1,0 +1,1 @@
+echo "preserve_hostname: true" >> /etc/cloud/cloud.cfg
