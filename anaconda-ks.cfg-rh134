@@ -1,0 +1,66 @@
+#version=DEVEL
+# System authorization information
+auth --enableshadow --passalgo=sha512
+repo --name="Server-HighAvailability" --baseurl=file:///run/install/repo/addons/HighAvailability
+repo --name="Server-ResilientStorage" --baseurl=file:///run/install/repo/addons/ResilientStorage
+# Use CDROM installation media
+cdrom
+# Use text install
+text
+# Don't run the Setup Agent on first boot
+firstboot --disabled
+ignoredisk --only-use=sda
+# Keyboard layouts
+keyboard --vckeymap=us --xlayouts='us'
+# System language
+lang en_US.UTF-8
+
+# Network information
+network  --bootproto=dhcp --device=enp0s3 --ipv6=auto --activate
+network  --hostname=localhost.localdomain
+
+# Root password
+rootpw --iscrypted $6$dsVWyxoxPyX7Sl2d$pw2H0YugGCMYJMQcpMREQF3XRQ6US9yr7AbrUmEs8fK.Tmrdz/DPfEeaHcGPDIJihCSKTrjkln0NuYf9tSkwq.
+#System services
+services  --disabled="kdump,rhsmcertd"  --enabled="network,sshd,rsyslog,chronyd"
+#Selinux configuration
+selinux --enforcing
+# System timezone
+timezone America/New_York --isUtc
+# System bootloader configuration
+bootloader --location=mbr --boot-drive=sda
+autopart --type=lvm
+# Partition clearing information
+clearpart --all --drives=sda --initlabel
+reboot --eject
+%packages
+@^minimal
+@core
+wget
+vim
+bash-completion
+-iwl100-firmware
+-iwl105-firmware
+-iwl135-firmware
+-iwl1000-firmware
+-iwl2000-firmware
+-iwl3945-firmware
+-iwl3160-firmware
+-iwl2030-firmware
+-iwl5000-firmware
+-iwl6000g2a-firmware
+-iwl5150-firmware
+-iwl6000-firmware
+-iwl6050-firmware
+-iwl7265-firmware
+-iwl4965-firmware
+-iwl6000g2b-firmware
+-iwl7260-firmware
+-iptables
+-Red_Hat_Enterprise_Linux-Release_Notes-7-en-US
+
+%end
+
+%addon com_redhat_kdump --disable --reserve-mb='auto'
+
+%end
