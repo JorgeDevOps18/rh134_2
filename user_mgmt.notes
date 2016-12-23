@@ -15,6 +15,7 @@ useradd \
 
 
 lslogins romeo
+lslogins rebe
 
 lslogins ec2-user
 
